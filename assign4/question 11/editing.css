@@ -1,0 +1,127 @@
+.border
+{
+    border-style: solid;
+   border-width: 30px;
+}
+#header
+{
+    font-size: 20px;
+    color: gray;
+    background-color: black;
+    height: 30px;
+    margin :-10px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+#navigationbar
+{
+    margin: -10px;
+    background-color: black;
+    overflow: hidden;
+}
+#navigationbar a
+{
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: inline-block;
+}
+
+#navigationbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+#middle
+{
+    background-color: white;
+}
+
+#body
+{
+    overflow: hidden;
+    background-color: #333333;
+    width: 960px;
+    height: 360px;
+    margin: 30px 70px 40px 140px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+
+}
+.pad{
+    padding: 105px 10px;
+}
+.pad1{
+    padding: 5px 5px;
+}
+#text
+{
+    width: 960px;
+    height: 60px;
+    text-align: justify;
+    background-color: #dddddd;
+    color: black;
+
+    padding-bottom: 1px;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-left: 1px;
+    margin-left: 140px;
+
+}
+
+
+#latest
+{
+    margin-left: 140px;
+}
+#hr
+{
+    color: #dddddd;
+    margin-left: 140px;
+    margin-right: 140px;
+}
+#bottom
+{
+    display: flex;
+
+    margin-right: 100px;
+    margin-left: 140px;
+    padding-bottom: 5px;
+}
+.one
+{
+    background-color: #333333;
+    width: 215px;
+    height: 315px;
+
+    color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 10px;
+}
+.two
+{
+background-color: lightgrey;
+    color: black;
+    width: 215px;
+    height: 25px;
+    margin-top: -16px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.footers
+{
+    background-color: black;
+    color: white;
+    padding-top: 10px;
+}
+
+#right{
+    margin-left: 620px;
+}
+
