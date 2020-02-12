@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" style="text/css" href="styles.css" />
+
+</head>
+<body>
+<header>To the new</header>
+    <nav >Home</nav>
+    <nav >Quickhelp</nav>
+
+<hr/>
+<form id="formm">
+    <h2>Bug report</h2>
+    Title:*
+    <input type="text" class="title1" required ><br>
+    <label for="Description">Description:*</label><br>
+    <textarea id="Description" rows="4" cols="45" class="description1">
+    </textarea><br><br>
+    Operating system:<br>
+    <select name="operating system" class="operating">
+        <option value="Windows 10">Windows 10</option>
+        <option value="Ubantu">ubantu</option>
+        <option value="IOS">IOS</option>
+    </select><br><br>
+    Product:<br>
+    <select name="product" class="product">
+        <option value="formoid">formoid</option>
+        <option value="Nesta">Nesta</option>
+    </select> <br><br>
+    Version:*<br>
+    <input type="text" name="Version" required class="version"><br>
+    License:<br>
+    <input type="radio" name="free" value="free" checked> Free
+    <input type="radio" name="business" value="busniess" style="margin-left: 130px"> Business<br>
+    Severity:<br>
+    <select name="severity" class="severity">
+    <option value="critical">critical</option><br>
+    </select> <br>
+    Attachments:<br>
+    <input type="file" name="attatchments" placeholder="no file selected"><br>
+    <div id="bottom">
+        <input type="button" value="send" class="button1" ><br>
+</form>
+
+</div>
+</body>
+</html>
