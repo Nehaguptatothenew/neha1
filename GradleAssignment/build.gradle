@@ -1,0 +1,38 @@
+plugins {
+    id 'java'//Applying java plugin
+}
+
+task newTask(type: Jar){
+    println 'this is first task'//Making new Task
+}
+
+class showdate implements Plugin<Project>{//Making Custom Plugin
+    @Override
+    void apply(Project target){
+        target.task("myTask"){
+            doLast{
+                println new Date()
+            }
+        }
+    }}
+
+apply plugin: showdate//Applying custom plugin
+sourceCompatibility = 1.8
+jar {
+    manifest {
+        attributes(
+                'Main-class': 'info.garagesalesapp.domain.SaleEvent'
+        )
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'com.google.code.gson:gson:2.8.0'//Adding Dependencies
+}
+wrapper{
+    version= '6.4.1'//Applying gradle Wrapper
+}
