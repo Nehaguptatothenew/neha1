@@ -18,12 +18,12 @@ public class Bootstrap implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         if(userRepository.count()<1){
             PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            UserSecurity user1 = new UserSecurity();
+            User user1 = new User();
             user1.setUsername("user");
             user1.setPassword(passwordEncoder.encode("pass"));
             user1.setRole("ROLE_USER");
 
-            UserSecurity user2 = new UserSecurity();
+            User user2 = new User();
             user2.setUsername("admin");
             user2.setPassword(passwordEncoder.encode("pass"));
             user2.setRole("ROLE_ADMIN");
