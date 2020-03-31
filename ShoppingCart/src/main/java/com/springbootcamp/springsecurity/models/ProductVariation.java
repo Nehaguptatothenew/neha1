@@ -2,71 +2,26 @@ package com.springbootcamp.springsecurity.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.IOException;
 import java.util.Map;
-import java.util.Set;
 
 @Entity
-public class ProductVariation extends DomainBase
-{
+@Table(name = "PRODUCT_VARIATION")
+public class ProductVariation extends DomainBase {
 
-           private Integer QUANTITY_AVAILABLE;
-           private Long PRICE;
-           private String PRIMARY_IMAGE_NAME;
-           private String metadataJSON;
+    @Column(name = "QUANTITY_AVAILABLE")
+    private Integer quantity_available;
+    @Column(name = "PRICE")
+    private Long price;
+    @Column(name = "PRIMARY_IMAGE_NAME")
+    private String primary_image_name;
+    private String metadataJSON;
 
-           @Convert(converter = HashMapConverter.class)
-           private Map<String, Object> metadatas;
-
-
-            @ManyToOne
-            @JoinColumn(name = "PRODUCT_ID")
-             private Product product;
-
-            @OneToMany(mappedBy = "productVariation",cascade = CascadeType.ALL)
-            private Set<Cart> carts;
-
-
-
-
-    public Integer getQUANTITY_AVAILABLE() {
-        return QUANTITY_AVAILABLE;
-    }
-
-    public void setQUANTITY_AVAILABLE(Integer QUANTITY_AVAILABLE) {
-        this.QUANTITY_AVAILABLE = QUANTITY_AVAILABLE;
-    }
-
-    public Long getPRICE() {
-        return PRICE;
-    }
-
-    public void setPRICE(Long PRICE) {
-        this.PRICE = PRICE;
-    }
-
-    public String getPRIMARY_IMAGE_NAME() {
-        return PRIMARY_IMAGE_NAME;
-    }
-
-    public void setPRIMARY_IMAGE_NAME(String PRIMARY_IMAGE_NAME) {
-        this.PRIMARY_IMAGE_NAME = PRIMARY_IMAGE_NAME;
-    }
-
-    public Product getProducts() {
-        return product;
-    }
-
-    public void setProducts(Product products) {
-        this.product = products;
-    }
-
-
-
-   private static final ObjectMapper objectMapper = new ObjectMapper();
+    @Convert(converter = HashMapConverter.class)
+    private Map<String, Object> metadatas;
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public void serializeCustomerAttributes() throws JsonProcessingException {
         this.metadataJSON = objectMapper.writeValueAsString(metadatas);
@@ -76,4 +31,81 @@ public class ProductVariation extends DomainBase
         this.metadatas = objectMapper.readValue(metadataJSON, Map.class);
     }
 
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    private Product product;
+
+
+    @OneToOne(mappedBy = "productVariation", cascade = CascadeType.ALL)
+    private Cart cart;
+    @OneToOne(mappedBy = "productVariation", cascade = CascadeType.ALL)
+    private OrderProduct orderProduct;
+
+    public Integer getQuantity_available() {
+        return quantity_available;
+    }
+
+    public void setQuantity_available(Integer quantity_available) {
+        this.quantity_available = quantity_available;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public String getPrimary_image_name() {
+        return primary_image_name;
+    }
+
+    public void setPrimary_image_name(String primary_image_name) {
+        this.primary_image_name = primary_image_name;
+    }
+
+    public String getMetadataJSON() {
+        return metadataJSON;
+    }
+
+    public void setMetadataJSON(String metadataJSON) {
+        this.metadataJSON = metadataJSON;
+    }
+
+    public Map<String, Object> getMetadatas() {
+        return metadatas;
+    }
+
+    public void setMetadatas(Map<String, Object> metadatas) {
+        this.metadatas = metadatas;
+    }
+
+    public static ObjectMapper getObjectMapper() {
+        return objectMapper;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public OrderProduct getOrderProduct() {
+        return orderProduct;
+    }
+
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.orderProduct = orderProduct;
+    }
 }

@@ -1,22 +1,28 @@
 package com.springbootcamp.springsecurity.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
-public  class Customer extends User
-{
-    private Long CONTACT;
+@Table(name = "CUSTOMER")
+public class Customer extends User {
+    @Column(name = "CONTACT")
+    private Long contact;
 
-    @OneToMany(mappedBy = "customer" ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Order> orders;
 
-    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<ProductReview> productReviews;
+
+    public Long getContact() {
+        return contact;
+    }
+
+    public void setContact(Long contact) {
+        this.contact = contact;
+    }
 
     public Set<Order> getOrders() {
         return orders;
@@ -26,11 +32,11 @@ public  class Customer extends User
         this.orders = orders;
     }
 
-    public Long getCONTACT() {
-        return CONTACT;
+    public Set<ProductReview> getProductReviews() {
+        return productReviews;
     }
 
-    public void setCONTACT(Long CONTACT) {
-        this.CONTACT = CONTACT;
+    public void setProductReviews(Set<ProductReview> productReviews) {
+        this.productReviews = productReviews;
     }
 }

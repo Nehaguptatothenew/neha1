@@ -1,19 +1,24 @@
 package com.springbootcamp.springsecurity.models;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "PRODUCT")
 public class Product extends DomainBase {
 
-    private String NAME;
-    private String DESCRIPTION;
-    private String BRAND;
-    private Boolean IS_CANCELLABLE;
-    private Boolean IS_RETURNABLE;
-    private Boolean IS_ACTIVE;
+    @Column(name = "NAME")
+    private String name;
+    @Column(name = "DESCRIPTION")
+    private String description;
+    @Column(name = "BRAND")
+    private String brand;
+    @Column(name = "IS_CANCELLABLE")
+    private Boolean is_cancellable;
+    @Column(name = "IS_RETURNABLE")
+    private Boolean is_returnable;
+    @Column(name = "IS_ACTIVE")
+    private Boolean is_active;
     @ManyToOne
     @JoinColumn(name = "SELLER_USER_ID")
     private Seller seller;
@@ -22,63 +27,62 @@ public class Product extends DomainBase {
     @JoinColumn(name = "CATEGORY_ID")
     private Category category;
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<ProductReview> productReviews;
 
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<ProductVariation> productVariations;
 
-    /*@ManyToOne(targetEntity = OrderStatus.class)
-    private OrderStatus orderStatus;
-*/
 
-    public String getNAME() {
-        return NAME;
+
+
+    public String getName() {
+        return name;
     }
 
-    public void setNAME(String NAME) {
-        this.NAME = NAME;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDESCRIPTION() {
-        return DESCRIPTION;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDESCRIPTION(String DESCRIPTION) {
-        this.DESCRIPTION = DESCRIPTION;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getBRAND() {
-        return BRAND;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setBRAND(String BRAND) {
-        this.BRAND = BRAND;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
-    public Boolean getIS_CANCELLABLE() {
-        return IS_CANCELLABLE;
+    public Boolean is_cancellable() {
+        return is_cancellable;
     }
 
-    public void setIS_CANCELLABLE(Boolean IS_CANCELLABLE) {
-        this.IS_CANCELLABLE = IS_CANCELLABLE;
+    public void setIs_cancellable(Boolean is_cancellable) {
+        this.is_cancellable = is_cancellable;
     }
 
-    public Boolean getIS_RETURNABLE() {
-        return IS_RETURNABLE;
+    public Boolean is_returnable() {
+        return is_returnable;
     }
 
-    public void setIS_RETURNABLE(Boolean IS_RETURNABLE) {
-        this.IS_RETURNABLE = IS_RETURNABLE;
+    public void setIs_returnable(Boolean is_returnable) {
+        this.is_returnable = is_returnable;
     }
 
-    public Boolean getIS_ACTIVE() {
-        return IS_ACTIVE;
+    public Boolean is_active() {
+        return is_active;
     }
 
-    public void setIS_ACTIVE(Boolean IS_ACTIVE) {
-        this.IS_ACTIVE = IS_ACTIVE;
+    public void setIs_active(Boolean is_active) {
+        this.is_active = is_active;
     }
 
     public Seller getSeller() {
@@ -112,4 +116,6 @@ public class Product extends DomainBase {
     public void setProductVariations(Set<ProductVariation> productVariations) {
         this.productVariations = productVariations;
     }
+
+
 }

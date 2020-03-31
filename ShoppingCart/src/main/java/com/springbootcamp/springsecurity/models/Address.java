@@ -1,73 +1,77 @@
 package com.springbootcamp.springsecurity.models;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @Embeddable
-public class Address extends DomainBase
-{
-    private String CITY;
-    private String STATE;
-    private String COUNTRY;
-    private Integer ZIP_CODE;
-    private String LABEL;
-    private String ADDRESS_LINE;
+@Table(name = "ADDRESS")
+public class Address extends DomainBase {
+
+    @Column(name = "CITY")
+    private String city;
+    @Column(name = "STATE")
+    private String state;
+    @Column(name = "COUNTRY")
+    private String country;
+    @Column(name = "ZIP_CODE")
+    private Integer zip_code;
+    @Column(name = "LABEL")
+    private String label;
+    @Column(name = "ADDRESS_LINE")
+    private String address_line;
+
     @ManyToOne
     @JoinColumn(name = "USER_ID")
-
     private User user;
 
-    public String getCITY() {
-        return CITY;
+    public String getCity() {
+        return city;
     }
 
-    public void setCITY(String CITY) {
-        this.CITY = CITY;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getSTATE() {
-        return STATE;
+    public String getState() {
+        return state;
     }
 
-    public void setSTATE(String STATE) {
-        this.STATE = STATE;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public String getCOUNTRY() {
-        return COUNTRY;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCOUNTRY(String COUNTRY) {
-        this.COUNTRY = COUNTRY;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-
-    public Integer getZIP_CODE() {
-        return ZIP_CODE;
+    public Integer getZip_code() {
+        return zip_code;
     }
 
-    public void setZIP_CODE(Integer ZIP_CODE) {
-        this.ZIP_CODE = ZIP_CODE;
+    public void setZip_code(Integer zip_code) {
+        this.zip_code = zip_code;
     }
 
-    public String getLABEL() {
-        return LABEL;
+    public String getAddress_line() {
+        return address_line;
     }
 
-    public void setLABEL(String LABEL) {
-        this.LABEL = LABEL;
+    public void setAddress_line(String address_line) {
+        this.address_line = address_line;
     }
 
-    public String getADDRESS_LINE() {
-        return ADDRESS_LINE;
+    public String getLabel() {
+        return label;
     }
 
-    public void setADDRESS_LINE(String ADDRESS_LINE) {
-        this.ADDRESS_LINE = ADDRESS_LINE;
+    public void setLabel(String label) {
+        this.label = label;
     }
+
 
     public User getUser() {
         return user;

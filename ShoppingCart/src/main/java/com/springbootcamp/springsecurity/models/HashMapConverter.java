@@ -2,12 +2,10 @@ package com.springbootcamp.springsecurity.models;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.slf4j.LoggerFactory;
 
 import javax.persistence.AttributeConverter;
 import java.io.IOException;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class HashMapConverter implements AttributeConverter<Map<String, Object>, String> {
 
