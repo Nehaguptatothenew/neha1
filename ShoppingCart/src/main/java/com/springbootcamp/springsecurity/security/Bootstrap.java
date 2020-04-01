@@ -1,6 +1,8 @@
-package com.springbootcamp.springsecurity;
+package com.springbootcamp.springsecurity.security;
 
 
+import com.springbootcamp.springsecurity.models.User;
+import com.springbootcamp.springsecurity.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -18,15 +20,15 @@ public class Bootstrap implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         if(userRepository.count()<1){
             PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-            UserSecurity user1 = new UserSecurity();
-            user1.setUsername("user");
+            User user1 = new User();
+            user1.setFirst_name("user");
             user1.setPassword(passwordEncoder.encode("pass"));
-            user1.setRole("ROLE_USER");
+            //user1.setRole("ROLE_USER");
 
-            UserSecurity user2 = new UserSecurity();
-            user2.setUsername("admin");
+            User user2 = new User();
+            user2.setFirst_name("admin");
             user2.setPassword(passwordEncoder.encode("pass"));
-            user2.setRole("ROLE_ADMIN");
+            //userSecurity2.setRole("ROLE_ADMIN");
 
             userRepository.save(user1);
             userRepository.save(user2);

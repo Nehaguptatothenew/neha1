@@ -1,16 +1,25 @@
 package com.springbootcamp.springsecurity.models;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.time.ZonedDateTime;
 
 @MappedSuperclass
-public abstract class DomainBase
-{
+public abstract class DomainBase {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
+    @Column(nullable = false, updatable = false, insertable = false)
+    @CreationTimestamp
+    private ZonedDateTime date_created;
+
+    @Column(nullable = false, updatable = false, insertable = false)
+    @UpdateTimestamp
+    private ZonedDateTime last_updated;
+
 
     public Long getId() {
         return id;

@@ -1,37 +1,43 @@
 package com.springbootcamp.springsecurity.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
-public class OrderProduct extends DomainBase
-{
-
-    //PRODUCT_VARIATION_ID
+@Table(name = "ORDER_PRODUCT")
+public class OrderProduct extends DomainBase {
     //PRODUCT_VARIATION_METADATA
-    private Integer QUANTITY;
-    private Long PRICE;
+    @Column(name = "QUANTITY")
+    private Integer quantity;
+    @Column(name = "PRICE")
+    private Long price;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
-    public Integer getQUANTITY() {
-        return QUANTITY;
+    @OneToOne
+    @JoinColumn(name = "PRODUCT_VARIATION_ID")
+    private ProductVariation productVariation;
+
+
+    /*@OneToOne(mappedBy = "orderProduct", cascade = CascadeType.ALL)
+    private OrderStatus orderStatus;
+*/
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setQUANTITY(Integer QUANTITY) {
-        this.QUANTITY = QUANTITY;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Long getPRICE() {
-        return PRICE;
+    public Long getPrice() {
+        return price;
     }
 
-    public void setPRICE(Long PRICE) {
-        this.PRICE = PRICE;
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
     public Order getOrder() {
@@ -42,5 +48,19 @@ public class OrderProduct extends DomainBase
         this.order = order;
     }
 
+    public ProductVariation getProductVariation() {
+        return productVariation;
+    }
 
+    public void setProductVariation(ProductVariation productVariation) {
+        this.productVariation = productVariation;
+    }
+
+   /* public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
+    }*/
 }

@@ -5,39 +5,40 @@ import java.util.Set;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "user_id")
-public class Seller extends User
-{
-    private String GST;
-    private Long COMPANY_CONTACT;
-    private String COMPANY_NAME;
-    @OneToMany(mappedBy = "seller",cascade = CascadeType.ALL)
+@Table(name = "SELLER")
+public class Seller extends User {
+    @Column(name = "GST")
+    private String gst;
+    @Column(name = "COMPANY_CONTACT")
+    private Long company_contact;
+    @Column(name = "COMPANY_NAME")
+    private String company_name;
+    @OneToMany(mappedBy = "seller", cascade = CascadeType.ALL)
     private Set<Product> products;
 
-
-    public String getGST() {
-        return GST;
+    public String getGst() {
+        return gst;
     }
 
-    public void setGST(String GST) {
-        this.GST = GST;
+    public void setGst(String gst) {
+        this.gst = gst;
     }
 
-    public Long getCOMPANY_CONTACT() {
-        return COMPANY_CONTACT;
+    public Long getCompany_contact() {
+        return company_contact;
     }
 
-    public void setCOMPANY_CONTACT(Long COMPANY_CONTACT) {
-        this.COMPANY_CONTACT = COMPANY_CONTACT;
+    public void setCompany_contact(Long company_contact) {
+        this.company_contact = company_contact;
     }
 
-    public String getCOMPANY_NAME() {
-        return COMPANY_NAME;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setCOMPANY_NAME(String COMPANY_NAME) {
-        this.COMPANY_NAME = COMPANY_NAME;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
-
 
     public Set<Product> getProducts() {
         return products;

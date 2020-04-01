@@ -3,34 +3,28 @@ package com.springbootcamp.springsecurity.models;
 import javax.persistence.*;
 
 @Entity
-public class ProductReview extends DomainBase
-{
+@Table(name = "PRODUCT_REVIEW")
+public class ProductReview extends DomainBase {
 
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
-    private Product product;
+    @Column(name = " REVIEW")
+    private String review;
+    @Column(name = "RATING")
+    private Integer rating;
 
-    @ManyToOne
-    @JoinColumn(name = "CUSTOMER_USER_ID")
-    private Customer customer;
-
-    private String REVIEW;
-    private Integer RATING;
-
-    public String getREVIEW() {
-        return REVIEW;
+    public String getReview() {
+        return review;
     }
 
-    public void setREVIEW(String REVIEW) {
-        this.REVIEW = REVIEW;
+    public void setReview(String review) {
+        this.review = review;
     }
 
-    public Integer getRATING() {
-        return RATING;
+    public Integer getRating() {
+        return rating;
     }
 
-    public void setRATING(Integer RATING) {
-        this.RATING = RATING;
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
     public Product getProduct() {
@@ -40,4 +34,22 @@ public class ProductReview extends DomainBase
     public void setProduct(Product product) {
         this.product = product;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "CUSTOMER_USER_ID")
+    private Customer customer;
+
+
 }

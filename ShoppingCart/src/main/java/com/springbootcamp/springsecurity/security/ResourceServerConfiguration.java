@@ -1,4 +1,4 @@
-package com.springbootcamp.springsecurity;
+package com.springbootcamp.springsecurity.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
