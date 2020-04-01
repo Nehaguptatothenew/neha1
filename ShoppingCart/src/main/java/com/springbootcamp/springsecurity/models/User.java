@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@EntityScan
+//@EntityScan
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "USER")
 public  class User extends DomainBase {
@@ -24,8 +24,6 @@ public  class User extends DomainBase {
     private Boolean is_deleted;
     @Column(name = "IS_ACTIVE")
     private Boolean is_active;
-
-
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),

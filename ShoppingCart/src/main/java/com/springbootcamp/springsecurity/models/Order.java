@@ -63,11 +63,13 @@ public class Order extends DomainBase {
         this.orderProduct = orderProduct;
     }
 
-    public Address getAddresses() {
+   public Address getAddresses() {
         return addresses;
     }
 
     public void setAddresses(Address addresses) {
         this.addresses = addresses;
     }
+
+
 }

@@ -5,8 +5,12 @@ import javax.persistence.*;
 @Entity
 @Embeddable
 @Table(name = "ADDRESS")
-public class Address extends DomainBase {
+public class Address {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID")
+    private Long id;
     @Column(name = "CITY")
     private String city;
     @Column(name = "STATE")
@@ -23,6 +27,14 @@ public class Address extends DomainBase {
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCity() {
         return city;
@@ -80,4 +92,5 @@ public class Address extends DomainBase {
     public void setUser(User user) {
         this.user = user;
     }
+
 }
